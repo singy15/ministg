@@ -15,6 +15,8 @@ Sample program for Game programming in Common Lisp.
 3. (ql:quickload :ministg)
 4. (ministg:main)
 
+WSAD to move, J to fire weapons.
+
 ## Licences
 
 ### freeglut
