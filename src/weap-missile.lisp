@@ -11,14 +11,14 @@
 (defclass weap-missile (weapon) ())
 
 (defmethod initialize-instance :around ((this weap-missile) &key parent) 
-  (setf (:recharge-max this) 20)
+  (setf (recharge-max this) 20)
   (call-next-method this :parent parent))
 
 (defmethod launch-single-msl ((this weap-missile) game dx dy)
   (let (b)
     (setf b (make-instance 'missile))
-    (setf (:x b) (:x (:parent this)))
-    (setf (:y b) (:y (:parent this)))
+    (setf (:x b) (:x (parent this)))
+    (setf (:y b) (:y (parent this)))
     (setf (:dx b) dx)
     (setf (:dy b) dy)
     (register game b)))

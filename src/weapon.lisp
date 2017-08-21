@@ -8,34 +8,34 @@
 
 (defclass weapon () 
   ((recharge
-     :accessor :recharge
+     :accessor recharge
      :initform 0)
    (recharge-max
-     :accessor :recharge-max
+     :accessor recharge-max
      :initform 0)
    (parent
-     :accessor :parent
+     :accessor parent
      :initform 0)))
 
 (defmethod initialize-instance :around ((this weapon) &key parent) 
-  (setf (:parent this) parent)
+  (setf (parent this) parent)
   (call-next-method this))
 
-(defmethod recharge ((this weapon))
-  (incf (:recharge this))
-  (if (> (:recharge this) (:recharge-max this))
-    (setf (:recharge this) (:recharge-max this))))
+(defmethod charge ((this weapon))
+  (incf (recharge this))
+  (if (> (recharge this) (recharge-max this))
+    (setf (recharge this) (recharge-max this))))
 
 (defmethod updt ((this weapon))
-  (recharge this))
+  (charge this))
 
 (defmethod p-recharged ((this weapon))
-  (equal (:recharge-max this) (:recharge this)))
+  (equal (recharge-max this) (recharge this)))
 
 (defmethod fire ((this weapon) game)
   (when (p-recharged this)
     (launch this game)
-    (setf (:recharge this) 0)))
+    (setf (recharge this) 0)))
 
 (defmethod launch ((this weapon) game))
 

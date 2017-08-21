@@ -14,7 +14,7 @@
 
 (defclass mychar (actor) 
   ((ls-weapons
-     :accessor :ls-weapons
+     :accessor ls-weapons
      :initform nil)))
 
 (defmethod initialize-instance :around ((this mychar) &key) 
@@ -23,7 +23,7 @@
   (setf (:x this) (/ lg:*width* 2.0))
   (setf (:y this) (/ lg:*height* 2.0))
   (setf (:col-size this) mychar:+col-size+)
-  (setf (:ls-weapons this) 
+  (setf (ls-weapons this) 
         (list (make-instance 'weap-bullet :parent this) 
               (make-instance 'weap-missile :parent this)))
   (call-next-method this))
@@ -39,11 +39,11 @@
     (setf (:y this) lg:*height*)))
 
 (defmethod updt-weapons ((this mychar))
-  (mapc #'updt (:ls-weapons this)))
+  (mapc #'updt (ls-weapons this)))
 
 (defmethod fire-weapons ((this mychar) game)
   (mapc (lambda (w) (fire w game)) 
-        (:ls-weapons this)))
+        (ls-weapons this)))
 
 (defmethod control ((this mychar) game)
   (if (gethash #\w lg:*keys*)
