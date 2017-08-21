@@ -15,8 +15,8 @@
 (defmethod launch ((this weap-bullet) game)
   (let (b)
     (setf b (make-instance 'my-bullet))
-    (setf (:x b) (:x (parent this)))
-    (setf (:y b) (:y (parent this)))
+    (setf (x b) (x (parent this)))
+    (setf (y b) (y (parent this)))
     (register game b)))
 
 (in-package :cl-user)
