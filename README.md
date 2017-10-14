@@ -10,6 +10,16 @@ Sample program for Game programming in Common Lisp.
 
 ## How to play?
 
+With [Roswell](http://roswell.github.io/)
+
+```
+$ ros install singy15/ministg
+$ ministg
+```
+
+
+Without Roswell (old-fashion way)
+
 1. Clone repository to ~/quicklisp/local-projects/ministg
 2. cd ~/quicklisp/local-projects/ministg
 3. (ql:quickload :ministg)
