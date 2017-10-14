@@ -14,7 +14,9 @@ With [Roswell](http://roswell.github.io/)
 
 ```
 $ ros install singy15/ministg
-$ ministg
+$ ros exec ministg
+# When the PATH to ~/.roswell/bin is resolved.
+# $ ministg 
 ```
 
 
